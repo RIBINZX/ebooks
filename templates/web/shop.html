@@ -742,7 +742,729 @@
             </div>
         </div>
 
+        <!-- Main Wrapper Start -->
+        <main id="content" class="main-content-wrapper">
+            <div class="shop-area pt--40 pb--80 pt-sm--30 pb-sm--60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-lg-2 mb-md--40">
+                            <!-- Shop Toolbar Start -->
+                            <div class="shop-toolbar">
+                                <div class="shop-toolbar__grid-list">
+                                    <ul class="nav">
+                                        <li>
+                                            <a class="active" data-bs-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
+                                        </li>
+                                        {% comment %} <li>
+                                            <a data-bs-toggle="tab" href="#list"><i class="fa fa-list"></i></a>
+                                        </li> {% endcomment %}
+                                    </ul>
+                                </div>
 
+                                
+                                <form action="{% url 'web:shop' %}" method="GET">
+                                    <div class="shop-toolbar__shorter">
+                                        <label>Short By:</label>
+                                        <select class="short-select nice-select" name="language">
+                                            <option value="" {% if not request.GET.language %}selected{% endif %}>All Languages</option>
+                                            <option value="eng" {% if request.GET.language == 'eng' %}selected{% endif %}>English</option>
+                                            <option value="mal" {% if request.GET.language == 'mal' %}selected{% endif %}>Malayalam</option>
+                                            <option value="ara" {% if request.GET.language == 'ara' %}selected{% endif %}>Arabic</option>
+                                        </select>
+                                        <button type="submit">Apply Filter</button>
+                                    </div>
+                                </form>
+                                <span class="shop-toolbar__product-count">There Are 13 Products.</span>
+                                </div>
+                                <!-- Shop Toolbar End -->
+                                
+                                <!-- Shop Layout Start -->
+                                <div class="main-shop-wrapper">
+                                    <div class="tab-content" id="myTabContent-2">
+                                        <div class="tab-pane show active" id="grid">
+                                            <div class="product-grid-view three-column">
+                                                <div class="row gx-0">
+                                
+                                                    {% for product in product %}
+                                                    <div class="col-md-4 col-sm-6">
+                                                        <div class="product-box product-box-hover-down bg--white color-1">
+                                                            <div class="product-box__img">
+                                                                <img src="{{product.image.url}}" alt="product" class="primary-image">
+                                                                <img src="{{product.image.url}}" alt="product" class="secondary-image">
+                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                            </div>
+                                                            <div class="product-box__content">
+                                                                <h3 class="product-box__title"><a href="single-product.html">{{product.name}}</a></h3>
+                                                                <div class="ratings">
+                                                                    <p>{{product.author}},{{product.year}}</p>
+                                                                </div>
+                                                                <div class="product-box__price">
+                                                                    <span class="regular-price">{{product.language}}</span>
+                                                                    <span class="sale-price">{{product.price}}</span>
+                                                                </div>
+                                                            </div>
+                                                            {% comment %} <div class="product-box__action action-2">
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> add to cart</a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div> {% endcomment %}
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                               
+
+
+                                                {% comment %} <div class="col-md-4 col-sm-6">
+                                                    <div class="product-box product-box-hover-down bg--white color-1">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/furniture-2-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/furniture-3-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$90.00</span>
+                                                                <span class="sale-price">$70.00</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-box__action action-2">
+                                                            <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                            <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> add to cart</a>
+                                                            <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div> {% endcomment %}
+
+
+
+                                            </div>
+                                            <div class="row gx-0">
+                                                <div class="col-12">
+                                                    {% comment %} <ul class="pagination">
+                                                        <li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                                        <li><a href="#">1</a></li>
+                                                        <li class="current"><a href="#">2</a></li>
+                                                        <li><a href="#">3</a></li>
+                                                        <li><a href="#">4</a></li>
+                                                        <li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                                                    </ul> {% endcomment %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="list">
+                                        <div class="product-list-view">
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/book-14-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/book-15-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$180.00</span>
+                                                                <span class="sale-price">$160.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/furniture-10-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/furniture-11-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$120.00</span>
+                                                                <span class="sale-price">$100.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/furniture-7-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/furniture-8-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$130.00</span>
+                                                                <span class="sale-price">$90.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/furniture-4-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/furniture-5-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$110.00</span>
+                                                                <span class="sale-price">$80.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/furniture-17-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/furniture-18-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$140.00</span>
+                                                                <span class="sale-price">$190.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/electronics-5-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/electronics-6-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$70.00</span>
+                                                                <span class="sale-price">$60.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/electronics-8-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/electronics-7-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$90.00</span>
+                                                                <span class="sale-price">$70.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/book-10-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/book-11-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$95.00</span>
+                                                                <span class="sale-price">$70.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/book-17-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/book-18-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$108.00</span>
+                                                                <span class="sale-price">$90.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-box product-box--list bg--white">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="product-box__img">
+                                                            <img src="{% static 'web/assets/img/products/electronics-15-250x278.jpg' %}" alt="product" class="primary-image">
+                                                            <img src="{% static 'web/assets/img/products/electronics-13-250x278.jpg' %}" alt="product" class="secondary-image">
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-box__content">
+                                                            <h3 class="product-box__title"><a href="single-product.html">Pellentesque position</a></h3>
+                                                            <div class="ratings">
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star rated"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="product-box__price">
+                                                                <span class="regular-price">$108.00</span>
+                                                                <span class="sale-price">$90.00</span>
+                                                            </div>
+                                                            <p class="product-box__desc">
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.
+                                                            </p>
+                                                            <div class="product-box__action action-4">
+                                                                <a href="cart.html" class="add-to-cart" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart"><i class="fa fa-shopping-bag"></i> Add to cart</a>
+                                                                <a href="wishlist.html" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+                                                                <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="pagination">
+                                                <li class="prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li class="current"><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li class="next"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Shop Layout End -->
+                        </div>
+
+
+                        <!-- sidebar -->
+
+                         <div class="col-lg-3 order-lg-1">
+                            <aside class="sidebar">
+                                <!-- Product Categories Widget Start -->
+                                <div class="sidebar-widget product-widget product-cat-widget">
+                                    <h3 class="widget-title">Product Categories</h3>
+                                    <div class="widget_conent">
+                                        <ul class="product-categories">
+                                            <form action="{% url 'web:shop' %}" method="GET">
+                                                <div class="shop-toolbar__shorter">
+                                                    
+                                                    <select class="short-select nice-select" name="language">
+                                                        <option value="" {% if not request.GET.language %}selected{% endif %}>All Languages</option>
+                                                        <option value="eng" {% if request.GET.language == 'eng' %}selected{% endif %}>English</option>
+                                                        <option value="mal" {% if request.GET.language == 'mal' %}selected{% endif %}>Malayalam</option>
+                                                        <option value="ara" {% if request.GET.language == 'ara' %}selected{% endif %}>Arabic</option>
+                                                    </select>
+                                                    <button type="submit">Apply Filter</button>
+                                                </div>
+                                            </form>
+                                            <li class="cat-item cat-parent">
+                                                <a href="shop.html">Electronics</a>
+                                                <span class="count">(14)</span>
+                                                <ul class="children">
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Laptops</a>
+                                                        <span class="count">(6)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Desktops</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Mobile</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Fridge</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="cat-item cat-parent">
+                                                <a href="shop.html">Furniture</a>
+                                                <span class="count">(16)</span>
+                                                <ul class="children">
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Bedroom</a>
+                                                        <span class="count">(6)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Livingroom</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Men</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                    <li class="cat-item">
+                                                        <a href="shop.html">Women</a>
+                                                        <span class="count">(5)</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="cat-item">
+                                                <a href="shop.html">Home</a>
+                                                <span class="count">(12)</span>
+                                            </li>
+                                            <li class="cat-item">
+                                                <a href="shop.html">Magazines</a>
+                                                <span class="count">(8)</span>
+                                            </li>
+                                            <li class="cat-item">
+                                                <a href="shop.html">Sport</a>
+                                                <span class="count">(5)</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Product Categories Widget End -->
+
+                                <!-- Product color Widget Start -->
+                                <div class="sidebar-widget product-widget product-color-widget">
+                                    <h3 class="widget-title">color</h3>
+                                    <div class="widget_conent">
+                                        <ul class="product-color">
+                                            <li><a href="shop.html">Black</a><span>(2)</span></li>
+                                            <li><a href="shop.html">Blue</a><span>(4)</span></li>
+                                            <li><a href="shop.html">Gold</a><span>(5)</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Product color Widget End -->
+
+
+
+
+
+
+                                <!-- Price Filter Widget Start -->
+                                <div class="sidebar-widget product-widget product-price-widget">
+                                    <div class="widget_conent">
+                                        <form action="{% url 'web:shop' %}" method="get" id="price-filter-form">
+                                            <div id="slider-range" class="price-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                                <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                            </div>
+                                            <div class="filter-price">
+                                                <div class="filter-price__count">
+                                                    <div class="filter-price__input-group">
+                                                        <span>Price: </span>
+                                                        <input type="text" id="amount" class="amount-range" readonly>
+                                                        <input type="hidden" name="min_price" id="min-price-input" value="{{ request.GET.min_price }}">
+                                                        <input type="hidden" name="max_price" id="max-price-input" value="{{ request.GET.max_price }}">
+                                                    </div>
+                                                    <button type="submit" class="sidebar-btn">Filter</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                               
+
+
+                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+<script>
+    $(function() {
+        var sliderRange = $("#slider-range");
+        var amountRange = $("#amount");
+        var minPriceInput = $("#min-price-input");
+        var maxPriceInput = $("#max-price-input");
+
+        // Set initial values from GET parameters or default values
+        var initialMinPrice = parseInt(minPriceInput.val()) || 0;
+        var initialMaxPrice = parseInt(maxPriceInput.val()) || 2000;
+
+        sliderRange.slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [initialMinPrice, initialMaxPrice],
+            slide: function(event, ui) {
+                amountRange.val(ui.values[0] + " - " + ui.values[1]);
+                minPriceInput.val(ui.values[0]);
+                maxPriceInput.val(ui.values[1]);
+            }
+        });
+
+        amountRange.val(sliderRange.slider("values", 0) + " - " + sliderRange.slider("values", 1));
+
+        $("#price-filter-form").on("submit", function() {
+            // No need to handle the form submission via JavaScript
+            // The default form submission will be handled by Django
+        });
+    });
+</script>
+
+
+
+                                <!-- Price Filter Widget End -->
+
+                                <!-- Price Compare Widget Start -->
+                                {% comment %} <div class="sidebar-widget product-widget product-compare-widget">
+                                    <h3 class="widget-title">Compare</h3>
+                                    <div class="widget_conent">
+                                        <ul>
+                                            <li>
+                                                <a href="sinngle-product.html">Condimentum furniture</a>
+                                                <span class="compare-remove"><i class="fa fa-times"></i></span>
+                                            </li>
+                                            <li>
+                                                <a href="sinngle-product.html">Auctor gravida enim</a>
+                                                <span class="compare-remove"><i class="fa fa-times"></i></span>
+                                            </li>
+                                            <li>
+                                                <a href="sinngle-product.html">Condimentum furniture</a>
+                                                <span class="compare-remove"><i class="fa fa-times"></i></span>
+                                            </li>
+                                        </ul>
+                                        <div class="compare-widget-bottom">
+                                            <a href="#">Clear all</a>
+                                            <a href="compare.html" class="sidebar-btn">Compare</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Price Compare Widget End -->
+
+                                <!-- Product Banner Widget Start -->
+                                <div class="sidebar-widget banner-widget">
+                                    <div class="promo-box full-width bg--white">
+                                        <a href="#">
+                                            <img src="{% static 'web/assets/img/banner/home1-product-banner-1.jpg' %}" alt="promo">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Product Banner Widget End -->
+
+                                <!-- Product Tags Widget Start -->
+                                <div class="sidebar-widget product-tags-widget">
+                                    <h3 class="widget-title">Product Tags</h3>
+                                    <div class="widget_conent">
+                                        <div class="tagcloud">
+                                            <a href="blog.html" rel="1">chilled</a>
+                                            <a href="blog.html" rel="2">dark</a>
+                                            <a href="blog.html" rel="3">euro</a>
+                                            <a href="blog.html" rel="2">fashion</a>
+                                            <a href="blog.html" rel="1">food</a>
+                                            <a href="blog.html" rel="4">hardware</a>
+                                            <a href="blog.html" rel="3">hat</a>
+                                            <a href="blog.html" rel="2">hipster</a>
+                                            <a href="blog.html" rel="1">holidays</a>
+                                            <a href="blog.html" rel="2">light</a>
+                                            <a href="blog.html" rel="1">mac</a>
+                                            <a href="blog.html" rel="3">place</a>
+                                            <a href="blog.html" rel="2">t-shirt</a>
+                                            <a href="blog.html" rel="1">travel</a>
+                                            <a href="blog.html" rel="2">video-2</a>
+                                            <a href="blog.html" rel="2">white</a>
+                                        </div>
+                                    </div>
+                                </div> {% endcomment %}
+                                <!-- Product Tags Widget End -->
+
+                            </aside>
+                        </div> 
+
+
+
+                    </div>
+                </div>
+            </div>
+        </main>
         <!-- Main Wrapper End -->
 
         <footer class="footer">
