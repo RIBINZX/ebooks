@@ -22,3 +22,13 @@ def shop(request):
 
     context = {"product": products, "request": request} # Pass the request object to the template context
     return render(request, "web/shop.html", context)
+
+
+
+def signup(request,):
+
+    return render(request, "web/signup.html")
+
+def login(request,):
+
+    return render(request, "web/login.html")

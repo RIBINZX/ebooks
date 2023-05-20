@@ -54,15 +54,108 @@
     <!-- Main JS -->
     <script src="{% static 'web/assets/js/main.js' %}" defer></script>
 
-</head>
 
+
+
+
+
+
+
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css"
+  rel="stylesheet"
+/>
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"
+></script>
+
+
+
+
+
+
+</head>
 <body>
+
+
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <form>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form1Example13" class="form-control form-control-lg" />
+                  <label class="form-label" for="form1Example13">Email address</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="form1Example23" class="form-control form-control-lg" />
+                  <label class="form-label" for="form1Example23">Password</label>
+                </div>
+      
+                <div class="d-flex justify-content-around align-items-center mb-4">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                    <label class="form-check-label" for="form1Example3"> Remember me </label>
+                  </div>
+                  <a href="#!">Forgot password?</a>
+                </div>
+      
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+      
+                <div class="divider d-flex align-items-center my-4">
+                  <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                </div>
+      
+                {% comment %} <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="#!"
+                  role="button">
+                  <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+                </a>
+                <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="#!"
+                  role="button">
+                  <i class="fab fa-twitter me-2"></i>Continue with Twitter</a> {% endcomment %}
+      
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
 
 
     <!-- Main Wrapper Start Here -->
     <div class="wrapper bg--zircon-light color-scheme-1">
         <!-- Header Area Start Here -->
-        <header class="header header-1">
+        {% comment %} <header class="header header-1">
             <div class="header-top header-1--top">
                 <div class="container">
                     <div class="row align-items-center">
@@ -106,11 +199,11 @@
                                     <div class="dropdown header-top__dropdown">
                                         <a class="dropdown-toggle" id="languageID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span>Language: </span>
-                                            <img src="{% static 'web/assets/img/header/1.jpg' %}" alt="English"> ENGLISH
+                                            <img src="assets/img/header/1.jpg" alt="English"> ENGLISH
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="languageID">
-                                            <a class="dropdown-item" href="#"><img src="{% static 'web/assets/img/header/1.jpg' %}" alt="English"> English</a>
-                                            <a class="dropdown-item" href="#"><img src="{% static 'web/assets/img/header/2.jpg' %}" alt="Français"> Français</a>
+                                            <a class="dropdown-item" href="#"><img src="assets/img/header/1.jpg" alt="English"> English</a>
+                                            <a class="dropdown-item" href="#"><img src="assets/img/header/2.jpg" alt="Français"> Français</a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +219,7 @@
                         <div class="col-xl-3 tex-xl-left text-center">
                             <!-- Logo Start -->
                             <a href="index.html" class="logo-box">
-                                <img src="{% static 'web/assets/img/logo/logo-white.png' %}" alt="logo">
+                                <img src="assets/img/logo/logo-white.png" alt="logo">
                             </a>
                             <!-- Logo End -->
                         </div>
@@ -495,7 +588,7 @@
                                         <div class="mini-cart__item">
                                             <div class="mini-cart__item--single">
                                                 <div class="mini-cart__item--image">
-                                                    <img src="{% static 'web/assets/img/products/electronics-4-150x167.jpg' %}" alt="product">
+                                                    <img src="assets/img/products/electronics-4-150x167.jpg" alt="product">
                                                 </div>
                                                 <div class="mini-cart__item--content">
                                                     <h4><a href="single-product.html">Odio tortor consequat</a> </h4>
@@ -506,7 +599,7 @@
                                             </div>
                                             <div class="mini-cart__item--single">
                                                 <div class="mini-cart__item--image">
-                                                    <img src="{% static 'web/assets/img/products/furniture-6-150x167.jpg' %}" alt="product">
+                                                    <img src="assets/img/products/furniture-6-150x167.jpg" alt="product">
                                                 </div>
                                                 <div class="mini-cart__item--content">
                                                     <h4><a href="single-product.html">Integer eget augue</a> </h4>
@@ -543,7 +636,7 @@
                         <div class="col-lg-3">
                             <!-- Sticky Logo Start -->
                             <a class="sticky-logo" href="index.html">
-                                <img src="{% static 'web/assets/img/logo/logo-white.png' %}" alt="logo">
+                                <img src="assets/img/logo/logo-white.png" alt="logo">
                             </a>
                             <!-- Sticky Logo End -->
                         </div>
@@ -726,82 +819,31 @@
                 </div>
             </div>
             <!-- Sticky Header End -->
-        </header>
+        </header> {% endcomment %}
         <!-- Header Area End Here -->
 
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><a>Shop</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Main Wrapper Start -->
-  
-
-
-        <div class="product-box product-box-hover-down bg--white color-1">
-
-            <h1>{{product.name}}</h1>
-            <div class="product-box__img">
-                <img src="{{product.image.url}}" alt="product" class="primary-image">
-                <img src="{{product.image.url}}" alt="product" class="secondary-image">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal" class="product-box__quick-view"><i class="fa fa-search"></i></a>
-            </div>
-            <div class="product-box__content">
-                <h3 class="product-box__title"><a href=""></a></h3>
-                <div class="ratings">
-                    <p>author:{{product.author}}</p>
-                    <p>publish year:{{product.year}}</p>
-                    <p>lng:{{product.language}}</p>
-                </div>
-
-                <div class="product-box__price">
-                    <span class="regular-price"></span>
-                    <span class="sale-price">{{product.price}}</span>
-                </div>
-            </div>
-
-        </div>
-
-        <footer class="footer">
-
-
-
+        <main id="content" class="">
             
+        
 
 
 
-            <div class="subscription-area bg-primary">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 mb-sm--30">
-                            <div class="subscription-text">
-                                <div class="subscription-text__icon">
-                                    <i class="fa fa-envelope-open color--white"></i>
-                                </div>
-                                <div class="subscription-text__right">
-                                    <h3 class="color--white">Newsletter</h3>
-                                    <p class="color--white">Sign up for our newsletter to get up-to-date from us</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <form class="newsletter-form validate"  action="https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
-                                <input type="email" class="newsletter-form__input" id="email" placeholder="Enter your email..">
-                                <input type="submit" value="Subscribe" class="newsletter-form__submit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+
+
+        
+
+
+
+
+
+
+
+
+        </main>
+        <!-- Main Wrapper End -->
+
+
 
 
         <!-- Scroll To Top -->
@@ -820,70 +862,70 @@
                     <div class="col-md-5">
                         <div class="tab-content product-thumb-large">
                             <div id="thumb1" class="tab-pane active show fade">
-                                <img src="{% static 'web/assets/img/products/electronics-15-540x600.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/electronics-15-540x600.jpg" alt="product thumb">
                             </div>
                             <div id="thumb2" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-14.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-14.jpg" alt="product thumb">
                             </div>
                             <div id="thumb3" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-17.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-17.jpg" alt="product thumb">
                             </div>
                             <div id="thumb4" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-7.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-7.jpg" alt="product thumb">
                             </div>
                             <div id="thumb5" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/electronics-15-540x600.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/electronics-15-540x600.jpg" alt="product thumb">
                             </div>
                             <div id="thumb6" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-14.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-14.jpg" alt="product thumb">
                             </div>
                             <div id="thumb7" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-17.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-17.jpg" alt="product thumb">
                             </div>
                             <div id="thumb8" class="tab-pane fade">
-                                <img src="{% static 'web/assets/img/products/furniture-7.jpg' %}" alt="product thumb">
+                                <img src="assets/img/products/furniture-7.jpg" alt="product thumb">
                             </div>
                         </div>
                         <div class="product-thumbnail">
                             <div class="thumb-menu owl-carousel" id="thumbmenu">
                                 <div class="thumb-menu-item">
                                     <a href="#thumb1" data-bs-toggle="tab" class="nav-link active">
-                                        <img src="{% static 'web/assets/img/products/book-15-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/book-15-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb2" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-14-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-14-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb3" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-17-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-17-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb4" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-7-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-7-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb5" data-bs-toggle="tab" class="nav-link active">
-                                        <img src="{% static 'web/assets/img/products/book-15-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/book-15-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb6" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-14-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-14-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb7" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-17-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-17-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                                 <div class="thumb-menu-item">
                                     <a href="#thumb8" data-bs-toggle="tab" class="nav-link">
-                                        <img src="{% static 'web/assets/img/products/furniture-7-150x167.jpg' %}" alt="product thumb">
+                                        <img src="assets/img/products/furniture-7-150x167.jpg" alt="product thumb">
                                     </a>
                                 </div>
                             </div>

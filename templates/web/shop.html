@@ -787,6 +787,7 @@
                                 
                                                     {% for product in product %}
                                                     <div class="col-md-4 col-sm-6">
+                                                        <a href="{% url 'web:shop_details' product.id %}">
                                                         <div class="product-box product-box-hover-down bg--white color-1">
                                                             <div class="product-box__img">
                                                                 <img src="{{product.image.url}}" alt="product" class="primary-image">
@@ -809,6 +810,7 @@
                                                                 <a href="compare.html" class="add-to-compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to compare"><i class="fa fa-refresh"></i></a>
                                                             </div> {% endcomment %}
                                                         </div>
+                                                    </a>
                                                     </div>
                                                     {% endfor %}
                                

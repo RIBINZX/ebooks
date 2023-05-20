@@ -9,5 +9,7 @@ app_name = "web"
 urlpatterns = [
     path("shop_details/<int:id>/", views.shop_details, name="shop_details"),
     path("", views.shop, name="shop"),
+    path("signup", views.signup, name="signup"),
+    path("login", views.login, name="login"),
 
 ]
