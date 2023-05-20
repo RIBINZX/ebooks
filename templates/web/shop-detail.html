@@ -768,7 +768,91 @@
                 </div>
             </div>
 
+
+
         </div>
+
+        <a href="static/web/assets/MY CV.pdf" download class="pdf-download-button"><button>Download PDF</button></a>
+        
+        </div>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+
+
+        <button class="open-overlay-button">Open Overlay</button>
+
+<div id="overlay" class="overlay">
+  <div class="overlay-content">
+    <object data="static/web/assets/MY CV.pdf" type="application/pdf" width="100%" height="100%">
+      <p>Your browser does not support PDF embedding. You can <a download href="static/web/assets/MY CV.pdf">download the PDF</a> instead.</p>
+    </object>
+    <button class="close-overlay-button">Close</button>
+  </div>
+</div>
+
+<style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay-content {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+  }
+
+  .open-overlay-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .open-overlay-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .close-overlay-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .close-overlay-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<script>
+  document.querySelector('.open-overlay-button').addEventListener('click', function() {
+    document.getElementById('overlay').style.display = 'flex';
+  });
+
+  document.querySelector('.close-overlay-button').addEventListener('click', function() {
+    document.getElementById('overlay').style.display = 'none';
+  });
+</script>
+
+
+
+
+
 
         <footer class="footer">
 

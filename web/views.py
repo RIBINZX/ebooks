@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import Product
 
 # Create your views here.
@@ -25,10 +28,44 @@ def shop(request):
 
 
 
-def signup(request,):
 
-    return render(request, "web/signup.html")
+def signup(request):
 
-def login(request,):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        
+        if password1 != password2:
+            print('Passwords do not match')
+            return redirect('web:signup')
+        else:
+            if User.objects.filter(username=username).exists():
+                print('User already exists')
+                return redirect('web:signup')
+            else:
+                user = User.objects.create_user(username=username, password=password1)
+                return redirect('web:login')
 
-    return render(request, "web/login.html")
+    return render(request, 'web/signup.html')
+
+
+
+
+
+def login_1(request,):
+
+    if request.method=="POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user =authenticate(request,username=username, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('web:shop')
+        else:  
+            print('hi')
+            return redirect('web:signup')
+    return render(request,"web/login.html")
+
+
+
