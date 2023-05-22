@@ -1,14 +1,48 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Product
 
+from django.http import HttpResponse
+from .models import Comment
+
+from django.http import JsonResponse
 # Create your views here.
-def shop_details(request,id):
-    product=Product.objects.get(id=id)
-    context = {"product": product}
+
+
+
+from django.contrib.auth.decorators import login_required
+
+from django.http import JsonResponse
+
+def shop_details(request, id):
+    product = get_object_or_404(Product, id=id)
+
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            comment_content = request.POST.get('comment')
+            if comment_content and comment_content.strip():
+                comment = Comment(content=comment_content, product=product, user=request.user)
+                comment.save()
+                return JsonResponse({'success': True, 'username': request.user.username, 'comment': comment_content})
+            else:
+                return JsonResponse({'success': False, 'message': 'Comment cannot be empty.'})
+        else:
+            return JsonResponse({'success': False, 'message': 'Authentication required'})
+
+    comments = Comment.objects.filter(product=product)
+    context = {"product": product, 'comments': comments}
     return render(request, "web/shop-detail.html", context)
+
+
+
+    
+
+
+
+
+
 
 def shop(request):
     language_filter = request.GET.get('language', '')
@@ -69,3 +103,6 @@ def login_1(request,):
 
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('web:shop')

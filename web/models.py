@@ -9,10 +9,23 @@ class Product(models.Model):
         ('ara', 'Arabic'),
     )
     language = models.CharField(max_length=3, choices=LANG_CHOICES)
-    author=models.CharField(max_length=50)
     name=models.CharField(max_length=50)
+    author=models.CharField(max_length=50)
     price=models.FloatField()
     year=models.IntegerField()
     image=models.ImageField(upload_to="")
 
+    def __str__(self):
+        return self.name
+    
 
+
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.content

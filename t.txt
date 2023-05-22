@@ -1,0 +1,71 @@
+def shop_details(request, id):
+    product = get_object_or_404(Product, id=id)
+
+    if request.method == 'POST':
+        comment_content = request.POST.get('comment')
+        comment = Comment(content=comment_content, product=product)  # Assuming the comment model has a ForeignKey to the product
+        comment.save()
+        return JsonResponse({'success': True, 'comment': {'content': comment_content}})
+
+    comments = Comment.objects.filter(product=product)
+    context = {"product": product, 'comments': comments}
+    return render(request, "web/shop-detail.html", context)
+    
+
+
+
+
+{% if user.is_authenticated %}
+<form id="comment-form" method="POST" action="{% url 'web:shop_details' product.id %}">
+    {% csrf_token %}
+    <input id="comment" name="comment" placeholder="Comment here" type="text">
+    <button type="submit">Add Comment</button>
+</form>
+{% else %}
+    <p>Please log in to add a comment.</p>
+{% endif %}
+
+
+<div id="popup-message" class="popup-message">
+    Comment added successfully!
+</div>
+
+<br>
+
+<div id="comment_section">
+    <div id="comments-container">
+        {% for comment in comments %}
+            {% if comment.product == product %}
+                <p>{{ comment.content }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#comment-form').submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+            var commentContent = $('#comment').val();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: {
+                    'comment': commentContent,
+                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#comment').val(''); // Clear the comment input
+                        $('#popup-message').fadeIn().delay(2000).fadeOut(); // Show popup message for 2 seconds
+                        // Append the new comment to the comments container
+                        $('#comments-container').append('<p>' + response.comment.content + '</p>');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
